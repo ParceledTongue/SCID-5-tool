@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scid>
+
+	<module>
+		<name>Initial Screening</name>
+		<id>I</id>
+		<instructions>The following screening questions will allow us to tailor the interview to your needs.</instructions>
+		
+		<question>
+			<id>I1</id>
+			<text>Are you allergic to dogs?</text>
+			<description>(screening for dogs)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>I2</id>
+			<text>Are you allergic to cats?</text>
+			<description>(screening for cats)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>I3</id>
+			<text>Do you suffer from ophidiophobia (fear of snakes)?</text>
+			<description>(screening for snakes)</description>
+			<answer_type>YN</answer_type>
+		</question>
+	</module>
+	
+	<module>
+		<name>Dogs</name>
+		<id>D</id>
+		<instructions>1 = Disagree     2 = Neutral     3 = Agree</instructions>
+		
+		<skip>
+			<id></id>
+			<condition>
+				<id>I1</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<assign>
+					<id>P1</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</true>
+			<false>
+				<goto>D1</goto>
+			</false>
+		</skip>
+		<question>
+			<id>D1</id>
+			<text>I want an active pet.</text>
+			<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum neque vel arcu ornare, in viverra leo venenatis. Vivamus malesuada accumsan tristique. Pellentesque ac tellus lacus. Mauris a ipsum ultrices, hendrerit ipsum nec, gravida metus. Praesent semper vitae lacus vel congue.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>D2</id>
+			<text>I want a pet descended from wolves.</text>
+			<description>Mauris egestas efficitur leo, quis sodales libero semper molestie. Nam eget elit placerat, lobortis nisl ut, accumsan nisl. Morbi placerat metus sit amet velit blandit condimentum. Nulla rhoncus hendrerit lectus lobortis ullamcorper. Ut tincidunt rhoncus tellus, nec volutpat elit hendrerit ac. Aenean ut luctus felis.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<skip>
+			<id></id>
+			<condition>
+				<id>D2</id>
+				<response>3</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<goto>D3</goto>
+			</true>
+			<false>
+				<goto>D4</goto>
+			</false>
+		</skip>
+		<question>
+			<id>D3</id>
+			<text>ASK ONLY IF PREVIOUS QUESTION ANSWERED 3: This is because, deep down, I consider myself a wolf person.</text>
+			<description>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse commodo libero nec ipsum eleifend euismod. Quisque ac lorem vel lorem imperdiet fringilla.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>D4</id>
+			<text>I want a pet that has been the star of many sports films.</text>
+			<description>Nulla elementum vel sapien condimentum vehicula.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<skip>
+			<id></id>
+			<condition>
+				<id>D1</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>D2</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>D3</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>D4</id>
+				<response>3</response>
+			</condition>
+			<total>3</total>
+			<true>
+				<assign>
+					<id>P1</id>
+					<response>YES</response>
+				</assign>
+				<next_module />
+			</true>
+			<false>
+				<assign>
+					<id>P1</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</false>
+		</skip>
+	</module>
+	
+	<module>
+		<name>Cats</name>
+		<id>C</id>
+		<instructions>1 = Disagree     2 = Neutral     3 = Agree</instructions>
+		
+		<skip>
+		<id></id>
+			<condition>
+				<id>I2</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<assign>
+					<id>P2</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</true>
+			<false>
+				<goto>C1</goto>
+			</false>
+		</skip>
+		<question>
+			<id>C1</id>
+			<text>I want a pet to watch TV with on the couch.</text>
+			<description>Nulla elementum vel sapien condimentum vehicula. Praesent et ante imperdiet turpis vestibulum rhoncus non ut tellus. Phasellus consectetur, tortor id laoreet rutrum, massa ipsum volutpat purus, sagittis tincidunt purus urna a sem.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>C2</id>
+			<text>I want a pet that purrs.</text>
+			<description>Nunc eu sodales sapien, in maximus ligula.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>C3</id>
+			<text>I want a pet that has been the star of many internet videos.</text>
+			<description>Praesent eget euismod diam, eu laoreet eros. Fusce vestibulum mi ut nibh venenatis, et pharetra mauris hendrerit. Donec sit amet feugiat urna, sed malesuada nulla.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<skip>
+		<id></id>
+			<condition>
+				<id>C1</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>C2</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>C3</id>
+				<response>3</response>
+			</condition>
+			<total>3</total>
+			<true>
+				<goto>C4</goto>
+			</true>
+			<false>
+				<assign>
+					<id>P2</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</false>
+		</skip>
+		<question>
+			<id>C4</id>
+			<text>Damn, you really like cats, huh?</text>
+			<description>Fusce vestibulum mi ut nibh venenatis, et pharetra mauris hendrerit.</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<skip>
+			<id></id>
+			<condition>
+				<id>C4</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<assign>
+					<id>P2</id>
+					<response>YES</response>
+				</assign>
+				<next_module />
+			</true>	
+			<false>
+				<assign>
+					<id>P2</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</false>
+		</skip>
+	</module>
+	
+	<module>
+		<name>Snakes</name>
+		<id>S</id>
+		<instructions>1 = Disagree     2 = Neutral     3 = Agree</instructions>
+		
+		<skip>
+			<id></id>
+			<condition>
+				<id>I3</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<assign>
+					<id>P3</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</true>
+			<false>
+				<goto>S1</goto>
+			</false>
+		</skip>
+		<question>
+			<id>S1</id>
+			<text>I want a pet that can eat other pets.</text>
+			<description>Praesent a pretium neque. Nulla volutpat lacus vel blandit hendrerit. Aliquam convallis sem est, a imperdiet augue semper quis. Nam id lacinia orci, at interdum nisi.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>S2</id>
+			<text>I want a pet without legs.</text>
+			<description>Integer odio purus, commodo eget volutpat eu, pulvinar sed est. Nam pulvinar velit in nisl placerat, sed posuere ipsum ullamcorper.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>S3</id>
+			<text>I want a pet that has been the star of many horror films.</text>
+			<description>Proin quis auctor magna, nec pellentesque neque. Aenean in mauris vitae justo venenatis pretium sit amet non ligula.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<skip>
+			<id></id>
+			<condition>
+				<id>S1</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>S2</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>S3</id>
+				<response>3</response>
+			</condition>
+			<total>3</total>
+			<true>
+				<assign>
+					<id>P3</id>
+					<response>YES</response>
+				</assign>
+				<next_module />
+			</true>	
+			<false>
+				<goto>S4</goto>
+			</false>
+		</skip>
+		<question>
+			<id>S4</id>
+			<text>Has your opinion of snakes improved since you answered those last few questions?</text>
+			<description>Integer odio purus, commodo eget volutpat eu, pulvinar sed est.</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<skip>
+			<id></id>
+			<condition>
+				<id>S4</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+		
+			<true>
+				<clear>S4</clear>
+				<repeat>S1</repeat>
+			</true>
+		
+			<false>
+				<assign>
+					<id>P3</id>
+					<response>NO</response>
+				</assign>
+				<next_module />
+			</false>
+		</skip>
+	</module>
+</scid>

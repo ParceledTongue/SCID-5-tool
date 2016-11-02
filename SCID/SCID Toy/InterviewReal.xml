@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scid>
+
+	<module>
+		<name>SCID Screening Module (excluding optional disorders)</name>
+		<id>S</id>
+		<instructions>Now I want to ask you some more specific questions about problems you may have had. We'll go into more detail about them later.</instructions>
+		
+		<question>
+			<id>S1</id>
+			<text>1. Have you ever had an intense rush of anxiety, or what someone might call a “panic attack,” when you suddenly felt very frightened, or anxious or suddenly developed a lot of physical symptoms?</text>
+			<description>(screening for panic attacks)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S2</id>
+			<text>2. Have you ever been very anxious about or afraid of situations like going out of the house alone, being in crowds, going to stores, standing in lines, or traveling on buses or trains?</text>
+			<description>(screening for Agoraphobia)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S3</id>
+			<text>3. Have you been especially nervous or anxious in social situations like having a conversation or meeting unfamiliar people?</text>
+			<description>(screening for Social Anxiety Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S4</id>
+			<text>4. Is there anything that you have been afraid to do or felt very uncomfortable doing in front of other people, like speaking, eating, writing, or using a public bathroom?</text>
+			<description>(screening for Social Anxiety Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S5</id>
+			<text>5. Are there any other things that have made you especially anxious or afraid, like flying, seeing blood, getting a shot, heights, closed places, or certain kinds of animals or insects?</text>
+			<description>(screening for Specific Phobia)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S6</id>
+			<text>6. Over the last several months have you been feeling anxious and worried for a lot of the time?</text>
+			<description>(screening for current Generalized Anxiety Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<skip>
+			<condition>
+				<id>S6</id>
+				<response>NO</response>
+			</condition>
+			<total>1</total>		
+			<true>
+				<goto>S7</goto>
+			</true>
+			<false>
+				<goto>S8</goto>
+			</false>
+		</skip>
+		<question>
+			<id>S7</id>
+			<text>7. ASK ONLY IF PREVIOUS QUESTION ANSWERED NO: Have you ever had a time lasting at least several months in which you were feeling anxious and worried for a lot of the time?</text>
+			<description>(screening for past Generalized Anxiety Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S8</id>
+			<text>8. Have you ever been bothered with thoughts that kept coming back to you even when you didn’t want them to, like being exposed to germs or dirt or needing everything to be lined up in a certain why?</text>
+			<description>(screening for obsessions in Obsessive-Compulsive Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S9</id>
+			<text>9. How about having images pop into your head that you didn’t want like violent or horrible scenes or something of a sexual nature?</text>
+			<description>(screening for obsessions in Obsessive-Compulsive Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S10</id>
+			<text>10. How about having urges to do something that kept coming back to you even though you didn’t want them to, like an urge to harm a loved one?</text>
+			<description>(screening for obsessions in Obsessive-Compulsive Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S11</id>
+			<text>11. Was there ever anything that you had to do over and over again and was hard to resist doing, like washing your hands again and again, repeating something over and over again until it “felt right,” counting up to a certain number, or checking something many times to make sure that you’d done it right?</text>
+			<description>(screening for compulsions in Obsessive-Compulsive Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S12</id>
+			<text>12. Have you ever had a time when you weighed much less than other people thought you ought to weigh?</text>
+			<description>(screening for Anorexia Nervosa)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S13</id>
+			<text>13. Have you often had time when your eating was out of control?</text>
+			<description>(screening for binge eating in Bulimia Nervosa and Binge Eating Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+			<id>S14</id>
+			<text>14. Over the past several years, have you often been easily distracted or disorganized?</text>
+			<description>(screening for inattention in current Attention-Deficit/Hyperactivity Disorder)</description>
+			<answer_type>YN</answer_type>
+		</question>
+		<question>
+	</module>
+	
+	<module>
+		<name>F. ANXIETY DISORDERS</name>
+		<id>F</id>
+		<instructions>1 = Disagree     2 = Neutral     3 = Agree</instructions>
+		
+		<skip>
+			<id>F1</id>
+			<condition>
+				<id>S1</id>
+				<response>NO</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<assign>
+					<id>P66</id>
+					<response>1</response>
+				</assign>
+				<assign>
+					<id>P67</id>
+					<response>1</response>
+				</assign>
+				<goto>F.8</goto>
+			</true>
+			<false>
+				<goto>F2</goto>
+			</false>
+		</skip>
+		<question>
+			<id>F2</id>
+			<text>
+				You’ve said that you have had an intense rush of anxiety, or what someone might call a “panic attack,” when you suddenly felt very frightened, or anxious or suddenly developed a lot of physical symptoms.
+
+				IF UNKNOWN: Did the symptoms come on suddenly?
+
+				IF YES: How long did it take from when it began to when it got really bad? (Did it happen within a few minutes?)
+			</text>
+			<description>
+				A panic attack is an abrupt surge of intense fear or intense discomfort that reaches a peak within minutes.
+			
+				Note: The abrupt surge can occur from a calm state or an anxious state.
+			</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F3</id>
+			<text>
+				During that attack…
+			
+				…did your heart race, pound or skip?
+			</text>
+			<description>1.	Palpitations, pounding heart, or accelerated heart rate.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F4</id>
+			<text>…did you sweat?</text>
+			<description>2.	Sweating.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F5</id>
+			<text>…did you tremble or shake?</text>
+			<description>3.	Trembling or shaking.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F6</id>
+			<text>…were you short of breath? (Have trouble catching your breath? Feel like you were being smothered?)</text>
+			<description>4.	Sensations of shortness of breath or smothering.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F7</id>
+			<text>…did you feel as if you were choking?</text>
+			<description>5.	Feelings of choking.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F8</id>
+			<text>…did you have chest pain or pressure?</text>
+			<description>6.	Chest pain or discomfort.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F9</id>
+			<text>…did you have nausea or upset stomach or the feeling that you were going to have diarrhea?</text>
+			<description>7.	Nausea or abdominal distress.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F10</id>
+			<text>...did you feel dizzy, unsteady, or like you might faint?</text>
+			<description>8.	Feeling dizzy, unsteady, lightheaded or faint.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F11</id>
+			<text>…did you have flushes, hot flashes, or chills?</text>
+			<description>9.	Chills or heat sensations.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F12</id>
+			<text>…did you have tingling or numbness in parts of your body?</text>
+			<description>10. Paresthesia (numbness or tingling sensations)</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F13</id>
+			<text>…did you have the feeling that you were detached from your body or mind, that time was moving slowly, or that you were an outside observer of your own thoughts or movements?
+			
+			IF NO: How about feeling that everything around you was unreal or that you were in a dream?</text>
+			<description>11. Derealization (feelings of unreality) or depersonalization (being detached from oneself).</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F14</id>
+			<text>…were you afraid you were going crazy or might lose control?</text>
+			<description>12. Fear or losing control or “going crazy.”</description>
+			<answer_type>123</answer_type>
+		</question>
+		<question>
+			<id>F15</id>
+			<text>…were you afraid that you were dying?</text>
+			<description>13. Fear of dying.</description>
+			<answer_type>123</answer_type>
+		</question>
+		<skip>
+			<id />
+			<condition>
+				<id>F3</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F4</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F5</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F6</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F7</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F8</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F9</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F10</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F11</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F12</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F13</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F14</id>
+				<response>3</response>
+			</condition>
+			<condition>
+				<id>F15</id>
+				<response>3</response>
+			</condition>
+			<total>4</total>
+			<true>
+				<goto>F17</goto>
+			</true>
+			<false>
+				<goto>F16</goto>
+			</false>
+		</skip>
+		<question>
+			<id>F16</id>
+			<text>Besides the one you just described, have you had any other attacks which had even more of the symptoms that I just asked you about?</text>
+			<description />
+			<answer_type>YN</answer_type>
+		</question>
+		<skip>
+			<id />
+			<condition>
+				<id>F16</id>
+				<response>YES</response>
+			</condition>
+			<total>1</total>
+			<true>
+				<clear>F16</clear>
+				<repeat>F2</repeat>
+			</true>
+			<false>
+				<goto>F.8</goto>
+			</false>
+		</skip>
+	</module>
+	
+</scid>
